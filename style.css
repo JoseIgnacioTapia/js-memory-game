@@ -1,6 +1,29 @@
+body {
+  background: #bdd2ea;
+  font-family: Arial;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h3 {
+  padding: 1.5em;
+  font-size: 2rem;
+}
+
 .grid {
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  height: 300px;
-  width: 400px;
+  height: 400px;
+  width: 500px;
+}
+
+img {
+  border: 0.5px solid #333;
 }
