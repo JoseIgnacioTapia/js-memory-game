@@ -61,6 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let cardsChosenId = [];
   const cardsWon = [];
 
+  const snackbar = document.createElement('div');
+
+  // create snackbar
+  function showSnackbar(message) {
+
+    snackbar.classList.add('snackbar');
+    document.querySelector('body').appendChild(snackbar);
+
+    snackbar.textContent = message;
+    snackbar.classList.add('active');
+    setTimeout(() => snackbar.classList.remove('active'), 4000);
+  }
+
   // create you board
   function createBoard() {
 
@@ -81,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const optionTwoId = cardsChosenId[1];
 
     if (cardsChosen[0] === cardsChosen[1]) {
-      alert('You found a match');
+      showSnackbar('You found a match');
+      snackbar.style.backgroundColor = '#81b29a';
       cards[optionOneId].setAttribute('src', 'img/white.png');   // hidden the pictures
       cards[optionTwoId].setAttribute('src', 'img/white.png');   
       cardsWon.push(cardsChosen);
@@ -89,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       cards[optionOneId].setAttribute('src', 'img/blank.png');
       cards[optionTwoId].setAttribute('src', 'img/blank.png');
-      alert('Sorry, try again');
+      showSnackbar('Sorry, try again');
+      snackbar.style.backgroundColor = '#e76f51';
     }
 
     cardsChosen = [];
@@ -98,7 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cardsWon.length === cardArray.length/2) {
       console.log(cardArray.length);
       resultDisplay.textContent = 'Congratulations! You found them all!';
+      setTimeout(() => location.reload(), 4000);
     }
+    
   }
 
   // flip your card
